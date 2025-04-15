@@ -4,7 +4,7 @@ const app = express()
 const PORT = process.env.PORT || 3000;
 const serverError = require('./middleware/serverError');
 const notFound = require('./middleware/notFound');
-
+const movies = require('./routers/movies')
 
 app.use(cors(
     {
@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
     res.send(`Movies API server running`)
 })
 
+app.use('/api/v1/movies', movies)
 
 app.use(serverError)
 
